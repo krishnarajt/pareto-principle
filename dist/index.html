@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Pareto Principle — an interactive field guide</title>
+  <meta name="description" content="An interactive field guide to the Pareto principle (the 80/20 rule): test it on your typing, words, camera, voice, mouse, and watch inequality emerge." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/index-BLMRUVfv.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Cupx_yfO.css">
+</head>
+<body>
+  <div class="aurora"></div>
+  <div class="grain"></div>
+
+  <!-- mobile top bar -->
+  <div class="topbar">
+    <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <div class="brand-mark" aria-hidden="true"><span>80<br>20</span></div>
+    <strong>The Pareto Principle</strong>
+  </div>
+  <div class="scrim" id="scrim"></div>
+
+  <div class="shell">
+    <!-- ============================ SIDEBAR ============================ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><span>80<br>20</span></div>
+        <div class="brand-name">Pareto Principle
+          <small>Field guide · 80/20</small>
+        </div>
+      </div>
+
+      <a class="nav-link" href="#dashboard" data-view="dashboard"><span class="nav-ico" aria-hidden="true">◎</span> Dashboard</a>
+
+      <div class="nav-group-label">Experiments</div>
+      <a class="nav-link" href="#typing" data-view="typing"><span class="nav-ico" aria-hidden="true">⌨️</span> Typing</a>
+      <a class="nav-link" href="#words" data-view="words"><span class="nav-ico" aria-hidden="true">🔤</span> Words <span class="nav-tag">Zipf</span></a>
+      <a class="nav-link" href="#monkeys" data-view="monkeys"><span class="nav-ico" aria-hidden="true">🐒</span> Monkeys</a>
+      <a class="nav-link" href="#camera" data-view="camera"><span class="nav-ico" aria-hidden="true">📷</span> Camera</a>
+      <a class="nav-link" href="#voice" data-view="voice"><span class="nav-ico" aria-hidden="true">🎤</span> Voice</a>
+      <a class="nav-link" href="#mouse" data-view="mouse"><span class="nav-ico" aria-hidden="true">🖱️</span> Mouse</a>
+
+      <div class="nav-group-label">Measuring concentration</div>
+      <a class="nav-link" href="#wealth" data-view="wealth"><span class="nav-ico" aria-hidden="true">💰</span> Wealth</a>
+      <a class="nav-link" href="#lorenz" data-view="lorenz"><span class="nav-ico" aria-hidden="true">📈</span> Lorenz &amp; Gini</a>
+
+      <div class="sidebar-foot">
+        Built as an honest illustration of the 80/20 rule. Everything is measured
+        in your browser — nothing is uploaded.
+      </div>
+    </aside>
+
+    <!-- ============================ CONTENT ============================ -->
+    <main class="content">
+
+      <!-- ---------------------------- DASHBOARD ---------------------------- -->
+      <section class="view active" data-view="dashboard">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="hero-kicker">The 80 / 20 rule, measured honestly</span>
+            <h1>A few causes do <span class="gradient-text">most</span> of the work.</h1>
+            <p>
+              Across economics, language, sound and software, ~80% of effects tend to
+              flow from ~20% of causes. This is an interactive field guide: test the
+              claim on your own typing, words, camera and voice — and watch inequality
+              emerge from nothing.
+            </p>
+            <div class="hero-actions">
+              <button data-goto="words">Start with Zipf's law →</button>
+              <button class="ghost" data-goto="typing">Test your keyboard</button>
+            </div>
+          </div>
+          <div class="hero-canvas-wrap">
+            <canvas id="heroChart" width="520" height="320" role="img" aria-label="A classic Pareto chart: bars sorted from largest to smallest with a rising cumulative line crossing the 80% mark within the first few bars."></canvas>
+            <span class="hero-caption">A classic Pareto curve — bars sorted, cumulative line, 80% mark</span>
+          </div>
+        </div>
+
+        <div class="idea-grid">
+          <div class="idea-card">
+            <div class="big">80 / 20</div>
+            <h3>A label, not a law</h3>
+            <p>The real split might be 90/10 or 70/30 — and the numbers needn't sum to 100.</p>
+          </div>
+          <div class="idea-card">
+            <div class="big">1896</div>
+            <h3>Pareto's discovery</h3>
+            <p>~80% of Italy's land sat with ~20% of its people. The shape kept recurring.</p>
+          </div>
+          <div class="idea-card">
+            <div class="big">round(n×0.2)</div>
+            <h3>Fixed in advance</h3>
+            <p>We pin the top 20% first, then <em>measure</em> their share — never cherry-pick.</p>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <h2>Jump into an experiment</h2>
+          <p>Eight live tests of the same lopsided shape. Each shows the activity first, then the full math beneath it.</p>
+        </div>
+        <div class="launch-grid" id="launchGrid"></div>
+
+        <div class="section-head">
+          <h2>Where 80/20 shows up in the real world</h2>
+          <p>The same shape across economics, language, health and more. Bars sorted largest→smallest, the white line is the running cumulative total, the dashed line marks 80%.</p>
+        </div>
+        <p class="disclaimer">
+          Figures are approximate and illustrative — drawn from commonly cited reports and
+          classic studies to show the characteristic shape, not exact values.
+        </p>
+        <div class="examples-grid" id="examplesGrid"></div>
+
+        <div class="lesson-intro">The principle, in depth</div>
+        <div class="lesson" data-lesson="dashboard"></div>
+      </section>
+
+      <!-- ---------------------------- TYPING ---------------------------- -->
+      <section class="view" data-view="typing">
+        <span class="eyebrow">Experiment 01 · Letters</span>
+        <h1 class="view-title">Your keyboard, <span class="gradient-text">heat-mapped</span></h1>
+        <p class="lede">
+          Do the top 20% of letters — five of the twenty-six — really account for 80% of
+          your keystrokes? Type something, or keep the typical-English view, and measure it.
+        </p>
+
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-number" id="topLetters">—</div>
+            <div class="stat-label">top 20% of letters (the “vital few”)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="topShare">—</div>
+            <div class="stat-label">of all keystrokes they cover</div>
+          </div>
+          <div class="stat-card cool">
+            <div class="stat-number">26</div>
+            <div class="stat-label">letters total</div>
+          </div>
+        </div>
+
+        <p class="hint">
+          Darker keys are pressed more often; the
+          <span class="legend-swatch hot"></span> outlined keys are the “vital few.”
+        </p>
+        <div class="keyboard" id="keyboard"></div>
+        <textarea id="typeBox" placeholder="Type here to see which keys you actually use…" rows="3" aria-label="Type or paste text to analyze your keystroke frequencies"></textarea>
+        <div class="controls">
+          <button id="resetBtn" class="ghost">Reset my typing</button>
+          <label class="toggle">
+            <input type="checkbox" id="modeToggle" checked />
+            Show typical English frequencies
+          </label>
+        </div>
+
+        <div class="section-head">
+          <h2>Cumulative keystrokes — the Pareto curve</h2>
+          <p>Letters sorted most→least used. The line climbs steeply, then flattens.</p>
+        </div>
+        <div class="chart" id="chart"></div>
+
+        <p class="verdict" id="verdict">Type something to test the 80/20 rule on your own text.</p>
+
+        <div class="lesson-intro">How it works &amp; the math</div>
+        <div class="lesson" data-lesson="typing"></div>
+      </section>
+
+      <!-- ---------------------------- WORDS (ZIPF) ---------------------------- -->
+      <section class="view" data-view="words">
+        <span class="eyebrow">Experiment 02 · Zipf's law</span>
+        <h1 class="view-title">Words: the <span class="gradient-text">cleanest</span> 80/20 of all</h1>
+        <p class="lede">
+          Rank whole words instead of letters and the concentration sharpens dramatically.
+          A handful of function words — <em>the, of, and, to</em> — carry most of any text.
+          This is the classic case: <b>Zipf's law</b>.
+        </p>
+
+        <textarea id="wordInput" rows="4" placeholder="Type or paste a paragraph…" aria-label="Type or paste a paragraph to analyze word frequency"></textarea>
+        <div class="controls">
+          <button id="wordSample" class="ghost">Load sample text</button>
+        </div>
+
+        <div class="stats two">
+          <div class="stat-card">
+            <div class="stat-number" id="wordTop">—</div>
+            <div class="stat-label">top 20% of unique words</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="wordShare">—</div>
+            <div class="stat-label">of all words written</div>
+          </div>
+        </div>
+
+        <div class="word-list" id="wordList"></div>
+        <p class="verdict" id="wordVerdict">Type or paste some text to test it.</p>
+
+        <div class="section-head">
+          <h2>The Zipf signature — a straight line on log–log axes</h2>
+          <p>Each dot is one word: its rank (most→least common) versus how often it appears, both on logarithmic scales. The dashed line is the ideal <em>frequency ∝ 1/rank</em>.</p>
+        </div>
+        <div class="media-stage">
+          <canvas id="zipfPlot" width="760" height="340" role="img" aria-label="Log–log scatter plot of word rank versus frequency, with a dashed reference line for the ideal one-over-rank Zipf relationship. The current top-20% share and verdict are shown in the stat cards above."></canvas>
+        </div>
+
+        <div class="lesson-intro">Zipf's law, in depth</div>
+        <div class="lesson" data-lesson="words"></div>
+      </section>
+
+      <!-- ---------------------------- MONKEYS ---------------------------- -->
+      <section class="view" data-view="monkeys">
+        <span class="eyebrow">Experiment 03 · Randomness</span>
+        <h1 class="view-title">Monkeys: order from <span class="gradient-text">pure chance</span></h1>
+        <p class="lede">
+          No language at all — we hammer random keys (letters + the spacebar) and split the
+          gibberish into “words.” Even so, a few short accidental words dominate. Concentration
+          emerging from nothing (Miller's monkeys).
+        </p>
+
+        <div class="controls">
+          <button id="monkeyGen">Generate gibberish</button>
+          <label class="toggle">
+            Length: <span id="monkeyLenLabel">50,000</span>
+            <input type="range" id="monkeyLen" min="2000" max="200000" step="2000" value="50000" aria-label="Gibberish length in characters" />
+          </label>
+          <label class="toggle">
+            Space chance: <span id="monkeySpaceLabel">18%</span>
+            <input type="range" id="monkeySpace" min="0.05" max="0.4" step="0.01" value="0.18" aria-label="Probability of a space character" />
+          </label>
+        </div>
+        <pre class="preview" id="monkeyPreview"></pre>
+        <div class="word-list" id="monkeyList"></div>
+
+        <div class="stats two">
+          <div class="stat-card">
+            <div class="stat-number" id="monkeyTop">—</div>
+            <div class="stat-label">top 20% of random “words”</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="monkeyShare">—</div>
+            <div class="stat-label">of all the gibberish</div>
+          </div>
+        </div>
+        <p class="verdict" id="monkeyVerdict">Generate some gibberish to see Zipf's law appear.</p>
+
+        <div class="lesson-intro">Why randomness looks Zipfian</div>
+        <div class="lesson" data-lesson="monkeys"></div>
+      </section>
+
+      <!-- ---------------------------- CAMERA ---------------------------- -->
+      <section class="view" data-view="camera">
+        <span class="eyebrow">Experiment 04 · Color</span>
+        <h1 class="view-title">Camera: do 20% of colors <span class="gradient-text">fill the frame?</span></h1>
+        <p class="lede">
+          We grab a frame, bucket pixels into similar colors, then check what share the most
+          common 20% of colors cover. The camera stays on your device — nothing is uploaded.
+        </p>
+
+        <div class="media-stage">
+          <video id="camVideo" autoplay playsinline muted aria-label="Live camera preview, processed only on your device"></video>
+          <canvas id="camCanvas" hidden></canvas>
+        </div>
+        <div class="controls">
+          <button id="camStart">Start camera</button>
+          <button id="camStop" class="ghost" disabled>Stop camera</button>
+        </div>
+        <div class="palette" id="camPalette"></div>
+
+        <div class="stats two">
+          <div class="stat-card">
+            <div class="stat-number" id="camTopColors">—</div>
+            <div class="stat-label">top 20% of colors</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="camShare">—</div>
+            <div class="stat-label">of the image they cover</div>
+          </div>
+        </div>
+        <p class="verdict" id="camVerdict">Start your camera to test the rule on what you see.</p>
+
+        <div class="lesson-intro">How color concentration is measured</div>
+        <div class="lesson" data-lesson="camera"></div>
+      </section>
+
+      <!-- ---------------------------- VOICE ---------------------------- -->
+      <section class="view" data-view="voice">
+        <span class="eyebrow">Experiment 05 · Sound</span>
+        <h1 class="view-title">Voice: where the sound <span class="gradient-text">energy hides</span></h1>
+        <p class="lede">
+          We split incoming audio into frequency bins and add up the energy in each, then check
+          what share the loudest 20% of frequencies carry. Audio is processed live in your
+          browser — nothing is recorded or sent.
+        </p>
+
+        <div class="media-stage">
+          <canvas id="spectrum" width="900" height="220" role="img" aria-label="Live audio spectrum: accumulated energy across frequency bins, with a labeled frequency axis in hertz and a relative-energy axis. The loudest-20% share is shown in the stat cards below."></canvas>
+        </div>
+        <div class="controls">
+          <button id="micStart">Start microphone</button>
+          <button id="micStop" class="ghost" disabled>Stop</button>
+          <label class="toggle">
+            Show up to: <span id="micRangeLabel">4.0 kHz</span>
+            <input type="range" id="micRange" min="1" max="12" step="0.5" value="4" aria-label="Maximum frequency shown on the spectrum, in kilohertz" />
+          </label>
+        </div>
+
+        <div class="stats two">
+          <div class="stat-card">
+            <div class="stat-number" id="micTopFreq">—</div>
+            <div class="stat-label">top 20% of frequency bins</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="micShare">—</div>
+            <div class="stat-label">of the sound energy they carry</div>
+          </div>
+        </div>
+        <p class="verdict" id="micVerdict">Start your microphone and speak, hum, or play music to test it.</p>
+
+        <div class="lesson-intro">The spectral math, step by step</div>
+        <div class="lesson" data-lesson="voice"></div>
+      </section>
+
+      <!-- ---------------------------- MOUSE ---------------------------- -->
+      <section class="view" data-view="mouse">
+        <span class="eyebrow">Experiment 06 · Space</span>
+        <h1 class="view-title">Mouse: the few inches you <span class="gradient-text">actually use</span></h1>
+        <p class="lede">
+          Move your cursor and click around inside the pad below. We track dwell time and clicks
+          per cell, then check how concentrated your movement really is.
+        </p>
+
+        <div class="media-stage">
+          <canvas id="mouseCanvas" width="900" height="300" role="img" aria-label="Heat-map pad showing where your cursor dwells and clicks; brighter cells were visited more. The concentration is summarized in the stat cards below."></canvas>
+        </div>
+        <div class="controls">
+          <button id="mouseReset" class="ghost">Reset heatmap</button>
+        </div>
+
+        <div class="stats two">
+          <div class="stat-card">
+            <div class="stat-number" id="mouseTop">—</div>
+            <div class="stat-label">top 20% of visited cells</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="mouseShare">—</div>
+            <div class="stat-label">of your activity</div>
+          </div>
+        </div>
+        <p class="verdict" id="mouseVerdict">Move and click inside the pad to build a heatmap.</p>
+
+        <div class="lesson-intro">How spatial dwell concentrates</div>
+        <div class="lesson" data-lesson="mouse"></div>
+      </section>
+
+      <!-- ---------------------------- WEALTH ---------------------------- -->
+      <section class="view" data-view="wealth">
+        <span class="eyebrow">Simulation · The original case</span>
+        <h1 class="view-title">Wealth: the distribution Pareto <span class="gradient-text">discovered</span></h1>
+        <p class="lede">
+          500 people start with equal money, then trade at random. Watch inequality emerge — this
+          is the income/wealth distribution Vilfredo Pareto described in 1896. Bars sorted
+          richest→poorest; <span class="legend-swatch hot"></span> marks the top 20%.
+        </p>
+
+        <div class="media-stage">
+          <canvas id="wealthCanvas" width="900" height="220" role="img" aria-label="Wealth distribution bar chart, sorted richest to poorest, with the richest 20% highlighted. The top-20% share is shown in the stat cards below."></canvas>
+        </div>
+        <div class="controls">
+          <button id="wealthToggle">Start trading</button>
+          <button id="wealthReset" class="ghost">Reset</button>
+          <label class="toggle">
+            Redistribution: <span id="wealthTaxLabel">0.0%</span>
+            <input type="range" id="wealthTax" min="0" max="0.02" step="0.001" value="0" aria-label="Redistribution rate per round" />
+          </label>
+        </div>
+
+        <div class="stats two">
+          <div class="stat-card">
+            <div class="stat-number" id="wealthTop">—</div>
+            <div class="stat-label">richest 20% (people)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="wealthShare">—</div>
+            <div class="stat-label">of all the wealth</div>
+          </div>
+        </div>
+        <p class="verdict" id="wealthVerdict">Press “Start trading” to watch it unfold.</p>
+
+        <div class="lesson-intro">Why fair trades still concentrate</div>
+        <div class="lesson" data-lesson="wealth"></div>
+      </section>
+
+      <!-- ---------------------------- LORENZ ---------------------------- -->
+      <section class="view" data-view="lorenz">
+        <span class="eyebrow">The measure · Concentration</span>
+        <h1 class="view-title">Lorenz curve &amp; the <span class="gradient-text">Gini coefficient</span></h1>
+        <p class="lede">
+          The Lorenz curve plots cumulative share of the “stuff” against cumulative share of the
+          population. The more it bows below the line of equality, the more concentrated things
+          are — and the <b>Gini coefficient</b> sums that up in a single number. Drag to vary it.
+        </p>
+
+        <div class="media-stage">
+          <canvas id="lorenzCanvas" width="400" height="400" role="img" aria-label="Lorenz curve plotted against the diagonal line of equality; the curve bows below it as inequality rises. The Gini coefficient and top-20% share are shown in the stat cards below."></canvas>
+        </div>
+        <div class="controls">
+          <label class="toggle">
+            Inequality: <span id="lorenzLabel">1.00</span>
+            <input type="range" id="lorenzSlider" min="0" max="2" step="0.05" value="1" aria-label="Inequality level (Zipf exponent s)" />
+          </label>
+        </div>
+
+        <div class="stats two">
+          <div class="stat-card">
+            <div class="stat-number" id="lorenzGini">—</div>
+            <div class="stat-label">Gini coefficient</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="lorenzShare">—</div>
+            <div class="stat-label">held by the top 20%</div>
+          </div>
+        </div>
+        <p class="verdict" id="lorenzVerdict"></p>
+
+        <div class="lesson-intro">Reading the Lorenz curve &amp; Gini</div>
+        <div class="lesson" data-lesson="lorenz"></div>
+      </section>
+
+      <footer>
+        <p>
+          Frequencies based on typical English-language letter distribution. Built as an
+          interactive illustration of the Pareto principle (the 80/20 rule). All measurement
+          happens locally in your browser.
+        </p>
+      </footer>
+    </main>
+  </div>
+
+</body>
+</html>

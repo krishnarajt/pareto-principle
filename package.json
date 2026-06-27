@@ -1,0 +1,15 @@
+{
+  "name": "pareto-principle-in-typing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "An interactive site illustrating the Pareto (80/20) principle across typing, color, and sound.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
